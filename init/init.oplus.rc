@@ -7,6 +7,10 @@
 import /odm/etc/init/hw/init.oplus.display.rc
 
 on fs
+    # Charger
+    write /proc/fastchg_fw_update 1
+    write /proc/ui_soc_decimal 1
+
     # Update touchpanel firmware in case we ship newer firmware in /odm
     write /proc/touchpanel/tp_fw_update 0
 
