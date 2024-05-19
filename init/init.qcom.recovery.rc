@@ -41,6 +41,10 @@ on fs
     mkdir /firmware
     mount vfat /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /firmware ro context=u:object_r:firmware_file:s0
 
+    # Load Fastchg firmware
+    write /proc/fastchg_fw_update 1
+    write /proc/ui_soc_decimal 1
+
 on property:dev.mnt.blk.firmware=*
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
