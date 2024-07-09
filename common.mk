@@ -343,6 +343,7 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.1-service.oplus-multihal \
+    libdumpstateutil.vendor \
     libsensorndkbridge \
     sensors.oplus
 
