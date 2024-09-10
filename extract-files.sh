@@ -127,6 +127,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
             ;;
+        odm/lib64/libwvhidl.so|odm/lib64/mediadrm/libwvdrmengine.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --add-needed "libcrypto_shim.so" "${2}"
+            ;;
         *)
             return 1
             ;;
