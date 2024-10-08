@@ -79,7 +79,7 @@ function blob_fixup() {
         odm/etc/init/vendor-oplus-hardware-oplusSensor-V1-service.rc)
             sed -i "/user/ s/system/root/g" "${2}"
             ;;
-        odm/lib/liblvimfs_wrapper.so|odm/lib64/libCOppLceTonemapAPI.so|odm/lib64/libaps_frame_registration.so|vendor/lib64/libalsc.so)
+        odm/lib/liblvimfs_wrapper.so|odm/lib64/libYTCommon.so|odm/lib64/libCOppLceTonemapAPI.so|odm/lib64/libaps_frame_registration.so|odm/lib64/libyuv2.so|vendor/lib64/libalsc.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
             ;;
