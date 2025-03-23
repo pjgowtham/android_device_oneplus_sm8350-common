@@ -49,6 +49,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libprocessgroup.so'),
     ('odm/lib64/mediadrm/libwvdrmengine.so', 'odm/lib64/libwvhidl.so'): blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    'odm/lib64/vendor.oplus.hardware.urcc-V1-ndk_platform.so': blob_fixup()
+        .add_needed('libjsoncpp_shim.so'),
     'product/app/PowerOffAlarm/PowerOffAlarm.apk': blob_fixup()
         .apktool_patch('blob-patches/PowerOffAlarm.patch'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
@@ -56,7 +58,7 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/bin/init.kernel.post_boot-lahaina.sh': blob_fixup()
         .regex_replace('uag', 'schedutil'),
     ('vendor/etc/media_lahaina/video_system_specs.json', 'vendor/etc/media_yupik_v1/video_system_specs.json'): blob_fixup()
-        .regex_replace('"max_retry_alloc_output_timeout": 1000,', '"max_retry_alloc_output_timeout": 0,'),
+        .regex_replace('"max_retry_alloc_output_timeout": 10000,', '"max_retry_alloc_output_timeout": 0,'),
     'vendor/etc/msm_irqbalance.conf': blob_fixup()
         .regex_replace('IGNORED_IRQ=27,23,38$', 'IGNORED_IRQ=27,23,38,115,332'),
 }  # fmt: skip
