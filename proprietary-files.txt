@@ -622,6 +622,7 @@ odm/etc/init/vendor.oplus.hardware.charger-V6-service.rc
 odm/etc/permissions/vendor-oplus-hardware-charger.xml
 odm/etc/vintf/manifest/manifest_oplus_charger_aidl.xml
 odm/firmware/fastchg/bms_heating_config.txt
+odm/firmware/fastchg/charge_time_config.csv|e5bcc378513cb42bcb071eef327c87920553b0c4
 odm/firmware/fastchg/charging_thermal_config_default.txt
 odm/firmware/fastchg/smart_chg_config_table.txt
 odm/lib64/libGaiaClient_vnd.so
