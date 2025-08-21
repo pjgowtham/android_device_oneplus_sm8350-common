@@ -46,8 +46,16 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    ('odm/bin/hw/vendor.oplus.hardware.charger-V6-service', 'odm/lib64/libGaiaClient_vnd.so'): blob_fixup()
+        .add_needed('libbase_shim.so')
+        .add_needed('libjsoncpp_shim.so')
+        .replace_needed('libosenseaidlhalclient.so', 'libosenseaidlhalclient_charge.so')
+        .replace_needed('vendor.oplus.hardware.charger-V6-ndk_platform.so', 'vendor.oplus.hardware.charger-V6-ndk.so')
+        .replace_needed('vendor.oplus.hardware.osense.client-V1-ndk_platform.so', 'vendor.oplus.hardware.osense.client-V1-ndk.so'),
     'odm/bin/hw/vendor.pixelworks.hardware.display.iris-service': blob_fixup()
         .add_needed('libprocessgroup.so'),
+    'odm/lib64/libosenseaidlhalclient_charge.so': blob_fixup()
+        .replace_needed('vendor.oplus.hardware.osense.client-V1-ndk_platform.so', 'vendor.oplus.hardware.osense.client-V1-ndk.so'),
     ('odm/lib64/mediadrm/libwvdrmengine.so', 'odm/lib64/libwvhidl.so'): blob_fixup()
         .add_needed('libcrypto_shim.so'),
     'odm/lib64/vendor.oplus.hardware.urcc-V1-ndk_platform.so': blob_fixup()
@@ -56,6 +64,8 @@ blob_fixups: blob_fixups_user_type = {
         .apktool_patch('blob-patches/PowerOffAlarm.patch'),
     'product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml': blob_fixup()
         .regex_replace('/my_product', '/product'),
+    'system_ext/bin/horae': blob_fixup()
+        .replace_needed('libprotobuf-cpp-lite.so', 'libprotobuf-cpp-lite-21.7.so'),
     'system_ext/lib64/libwfdnative.so': blob_fixup()
         .add_needed('libinput_shim.so'),
     'vendor/bin/init.kernel.post_boot-lahaina.sh': blob_fixup()
